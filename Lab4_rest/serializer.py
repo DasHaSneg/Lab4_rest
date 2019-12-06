@@ -16,7 +16,9 @@ class InventoryTypeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = ItemType
         fields = ('url', 'name')
-
+    class Meta:
+        model = ItemType
+        fields = ('url', 'name')
 
 class InventorySerializer(serializers.HyperlinkedModelSerializer):
   #  item_types = InventoryTypeSerializer(many=True, read_only=True)

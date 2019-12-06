@@ -6,7 +6,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 from GameMap.models import Location
-
+from django.core.cache import cache
 Choices_class = (
  ('Knight', u'Knight'),
  ('Wizard', u'Wizard'),
@@ -23,6 +23,12 @@ class Player(models.Model):
     email = models.CharField(verbose_name=u'Email', max_length=50, blank=True)
     level = models.IntegerField(verbose_name=u'Player level', default=0)
     position = models.ForeignKey(Location, default=1, on_delete=models.PROTECT)
+
+    def __str__(self):
+        return self.user.username
+
+    def last_seen(self):
+        return cache.get('last_seen_%s' % self.user.username)
 
     def __unicode__(self):
         return self.name
