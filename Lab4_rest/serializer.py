@@ -6,7 +6,7 @@ from rest_framework import serializers
 class PlayerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Player
-        fields = ('url', 'user', 'name', 'email', 'playerclass', 'level', 'position')
+        fields = ('url', 'hero_name', 'email', 'playerclass', 'rank_level', 'position')
 class LocationSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Location
